@@ -9,7 +9,6 @@ A simple one-to-one chat application built with Flutter and Firebase.
 
 ## Setup Instructions
 Clone the repository:
-Copy code
 ```bash
 git clone https://github.com/SumaiyaMili/TalkeeTalkWithGetx.git
 ```
