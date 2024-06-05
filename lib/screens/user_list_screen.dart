@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../controller/user_list_controller.dart';
 import 'chat_screen.dart';
 import 'login_screen.dart';
 
@@ -10,12 +13,15 @@ late User loggedInUser;
 class UserListScreen extends StatefulWidget {
   static const String id = "User_List_Screen";
 
+
   @override
   _UserListScreenState createState() => _UserListScreenState();
 }
 
 class _UserListScreenState extends State<UserListScreen> {
   final _auth = FirebaseAuth.instance;
+
+  final UserListController _controller = Get.put(UserListController());
 
   @override
   void initState() {
@@ -38,13 +44,13 @@ class _UserListScreenState extends State<UserListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple[200],
+        backgroundColor: Colors.deepPurple,
         title: Text('Talk Mate'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications_active),
             onPressed: () async {
-
+              _controller.listenForNewMessages();
             },
           ),
         ],
@@ -82,7 +88,8 @@ class _UserListScreenState extends State<UserListScreen> {
                 title: Text('Logout'),
                 onTap: () async {
                   await _auth.signOut();
-                  Navigator.pushReplacementNamed(context, LoginScreen.id);
+                  Get.offAll(LoginScreen()); // Navigate to the LoginScreen after signing out
+
                 },
               ),
             ],

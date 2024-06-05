@@ -1,46 +1,11 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:talketalk/screens/login_screen.dart';
 import 'package:talketalk/screens/registration_screen.dart';
 import '../component/rounded_button.dart';
-import 'login_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  static const String id = "Welcome_Screen";
-
-  @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
-}
-
-class _WelcomeScreenState extends State<WelcomeScreen>
-    with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation animation;
-
-  @override
-  void initState() {
-    super.initState();
-    Firebase.initializeApp().whenComplete(() {
-      print("completed");
-      setState(() {});
-    });
-
-    controller = AnimationController(
-        duration: Duration(seconds: 1), upperBound: 100, vsync: this);
-    controller.forward();
-    controller.addListener(() {
-      setState(() {
-        print('${controller.value}');
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
+class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     tag: 'logo',
                     child: Container(
                       child: Image.asset('images/logo.png'),
-                      height: controller.value,
+                      height: 60.0,
                     ),
                   ),
                 ),
@@ -86,14 +51,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               buttonColor: Colors.purpleAccent,
               lebelText: 'Log In',
               onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
+                Get.toNamed('/loginScreen');
               },
             ),
             SolidColuredButton(
               buttonColor: Colors.purple,
               lebelText: 'Register',
               onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
+                Get.toNamed('/registrationScreen');
               },
             ),
           ],

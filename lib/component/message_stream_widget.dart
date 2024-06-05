@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
 import '../screens/chat_screen.dart';
 import 'msg_bubble_widget.dart';
 

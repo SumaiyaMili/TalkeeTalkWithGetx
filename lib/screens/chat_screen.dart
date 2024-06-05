@@ -49,46 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
         ],
         title: Text('${widget.chatSender.split('@').first}'),
-        backgroundColor: Colors.purple[200],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.purpleAccent,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.person,
-                    size: 100,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    loggedInUser.email ?? '',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
-              onTap: () async {
-                await _auth.signOut();
-                Navigator.pushReplacementNamed(context, LoginScreen.id);
-              },
-            ),
-          ],
-        ),
+        backgroundColor: Colors.deepPurple,
       ),
       body: SafeArea(
         child: Padding(
