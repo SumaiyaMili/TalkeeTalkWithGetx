@@ -20,8 +20,9 @@ git clone https://github.com/SumaiyaMili/TalkeeTalkWithGetx.git
 - Open the project in your preferred IDE or text editor.
 
 ## Install the dependencies by running the following command in your terminal:
+```
 flutter pub get
-
+```
 ## Run the application:
 ```
 flutter run
